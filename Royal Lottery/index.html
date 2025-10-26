@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Royal Lottery Club</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #f5f7fa, #e8ecf1);
+      color: #222;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      background: #14213d;
+      color: white;
+      padding: 10px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    header img {
+      height: 60px;
+      margin-right: 15px;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      text-align: left;
+    }
+
+    .carousel {
+      margin: 20px auto;
+      width: 90%;
+      max-width: 450px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    #banner {
+      width: 100%;
+      border-radius: 10px;
+      transition: opacity 0.5s ease-in-out;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .buttons {
+      margin: 1.5rem;
+      animation: fadeIn 2s ease-in;
+    }
+
+    .main-btn {
+      background: linear-gradient(45deg, #fca311, #e37c00);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      margin: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .main-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .secondary {
+      background: linear-gradient(45deg, #4361ee, #2743c2);
+    }
+
+    .popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .popup.hidden { display: none; }
+
+    .form-container {
+      background: white;
+      padding: 20px 25px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      animation: popIn 0.5s ease;
+    }
+
+    input {
+      width: 90%;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .close-btn {
+      background: #999;
+      color: white;
+      padding: 8px 20px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    footer {
+      margin-top: 2rem;
+      padding: 15px;
+      background: #14213d;
+      color: white;
+      font-size: 0.9rem;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+    }
+
+    #dashboard {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 450px;
+      margin: 20px auto;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+      animation: fadeIn 0.7s ease;
+    }
+
+    #dashboard.hidden { display: none; }
+
+    #userInfo {
+      margin-bottom: 20px;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <img src="assets/logo.png" alt="Royal Lottery Logo">
+    <h1>Royal Lottery Club</h1>
+  </header>
+
+  <!-- CAROUSEL -->
+  <section class="carousel">
+    <img id="banner" src="assets/banner1.jpg" alt="Banner" />
+  </section>
+
+  <!-- BUTTONS -->
+  <section class="buttons">
+    <button id="registerBtn" class="main-btn">Register Now</button>
+    <button id="loginBtn" class="main-btn secondary">Login</button>
+  </section>
+
+  <!-- REGISTRATION -->
+  <div id="registerForm" class="popup hidden">
+    <div class="form-container">
+      <h2>Register Now</h2>
+      <input type="text" id="name" placeholder="Enter Name" required />
+      <input type="text" id="mobile" placeholder="Enter Mobile Number" required />
+      <input type="text" id="address" placeholder="Enter Address" required />
+      <input type="email" id="email" placeholder="Enter Gmail" required />
+      <button id="submitBtn" class="main-btn">Submit</button>
+      <button id="closeRegister" class="close-btn">Close</button>
+    </div>
+  </div>
+
+  <!-- LOGIN -->
+  <div id="loginForm" class="popup hidden">
+    <div class="form-container">
+      <h2>Existing User Login</h2>
+      <input type="text" id="loginName" placeholder="Enter Name" required />
+      <input type="text" id="ticketNumber" placeholder="Enter Ticket Number" required />
+      <button id="loginSubmit" class="main-btn">Login</button>
+      <button id="closeLogin" class="close-btn">Close</button>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="hidden">
+    <h2>Welcome to Your Dashboard</h2>
+    <div id="userInfo"></div>
+    <button id="downloadTicket" class="main-btn">Download Ticket (PDF)</button>
+    <a id="joinGroup" class="main-btn secondary" target="_blank">Join Group</a>
+    <button id="closeDashboard" class="close-btn">Close</button>
+  </div>
+
+  <!-- POPUP MESSAGE -->
+  <div id="popupMessage" class="popup hidden">
+    <div class="form-container">
+      <p id="popupText"></p>
+      <button id="closePopup" class="main-btn">OK</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Royal Lottery Club | All rights reserved</p>
+  </footer>
+
+  <!-- JS LIBRARIES -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzAp14MGg9cga7atDRlS2vCwMMPjjnHM_Mb_8irQwVf61Hp3weGqVGTYALzMHWA3CiCOg/exec";
+
+    const banners = ["assets/banner1.jpg", "assets/banner2.jpg", "assets/banner3.jpg", "assets/banner4.jpg"];
+    let i = 0;
+    setInterval(() => {
+      const b = document.getElementById("banner");
+      b.style.opacity = 0;
+      setTimeout(() => {
+        i = (i + 1) % banners.length;
+        b.src = banners[i];
+        b.style.opacity = 1;
+      }, 300);
+    }, 1500);
+
+    const regForm = document.getElementById("registerForm");
+    const logForm = document.getElementById("loginForm");
+    const dash = document.getElementById("dashboard");
+    const pop = document.getElementById("popupMessage");
+    const pText = document.getElementById("popupText");
+
+    document.getElementById("registerBtn").onclick = () => regForm.classList.remove("hidden");
+    document.getElementById("loginBtn").onclick = () => logForm.classList.remove("hidden");
+    document.getElementById("closeRegister").onclick = () => regForm.classList.add("hidden");
+    document.getElementById("closeLogin").onclick = () => logForm.classList.add("hidden");
+    document.getElementById("closePopup").onclick = () => pop.classList.add("hidden");
+    document.getElementById("closeDashboard").onclick = () => dash.classList.add("hidden");
+
+    document.getElementById("submitBtn").onclick = async () => {
+      const name = document.getElementById("name").value.trim();
+      const mobile = document.getElementById("mobile").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const email = document.getElementById("email").value.trim();
+      if (!name || !mobile || !address || !email) return alert("Please fill all fields!");
+
+      await fetch(scriptURL, { method: "POST", body: JSON.stringify({ name, mobile, address, email }) });
+      regForm.classList.add("hidden");
+      pText.innerText = "Our Royal Lottery Club team will get back to you soon and allot your lottery ticket. Please wait while we process your details.";
+      pop.classList.remove("hidden");
+    };
+
+    document.getElementById("loginSubmit").onclick = async () => {
+      const name = document.getElementById("loginName").value.trim();
+      const ticket = document.getElementById("ticketNumber").value.trim();
+      if (!name || !ticket) return alert("Enter both fields!");
+
+      const res = await fetch(`${scriptURL}?name=${encodeURIComponent(name)}&ticket=${encodeURIComponent(ticket)}`);
+      const user = await res.json();
+
+      if (!user.name) {
+        pText.innerText = "Invalid login. Please check your details.";
+        pop.classList.remove("hidden");
+        return;
+      }
+
+      logForm.classList.add("hidden");
+      dash.classList.remove("hidden");
+      document.getElementById("userInfo").innerHTML = `
+        <strong>Name:</strong> ${user.name}<br>
+        <strong>Mobile:</strong> ${user.mobile}<br>
+        <strong>Address:</strong> ${user.address}<br>
+        <strong>Email:</strong> ${user.email}<br>
+        <strong>Ticket:</strong> ${user.ticket}
+      `;
+      document.getElementById("joinGroup").href = "https://chat.whatsapp.com/your-group-link";
+
+      document.getElementById("downloadTicket").onclick = async () => {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        const logo = await toBase64("assets/logo.png");
+
+        doc.setFillColor(20, 33, 61);
+        doc.rect(0, 0, 210, 40, "F");
+        doc.addImage(logo, "PNG", 15, 5, 25, 25);
+        doc.setTextColor(255, 215, 0);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(20);
+        doc.text("Royal Lottery Club", 60, 22);
+
+        doc.setTextColor(0, 0, 0);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(12);
+        doc.text(`Name: ${user.name}`, 20, 55);
+        doc.text(`Mobile: ${user.mobile}`, 20, 65);
+        doc.text(`Address: ${user.address}`, 20, 75);
+        doc.text(`Email: ${user.email}`, 20, 85);
+        doc.text(`Ticket Number: ${user.ticket}`, 20, 95);
+
+        doc.text("Ticket Details:", 20, 110);
+        doc.rect(15, 115, 180, 30);
+        doc.text("Item", 25, 125);
+        doc.text("Qty", 100, 125);
+        doc.text("Price", 160, 125);
+        doc.text("Lottery Ticket", 25, 135);
+        doc.text("1", 105, 135);
+        doc.text("₹150", 160, 135);
+        doc.text("Grand Total: ₹150", 130, 150);
+
+        doc.setFont("helvetica", "italic");
+        doc.text("Terms & Conditions:", 20, 170);
+        doc.text([
+          "1. Ticket once sold cannot be refunded.",
+          "2. Winners will be contacted via registered mobile.",
+          "3. Keep your ticket safe until draw day.",
+          "4. Royal Lottery Club decisions are final.",
+          "5. Must be 18 years or older to participate."
+        ], 20, 180);
+
+        doc.save(`Royal_Lottery_Ticket_${user.ticket}.pdf`);
+      };
+    };
+
+    async function toBase64(url) {
+      const res = await fetch(url);
+      const blob = await res.blob();
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.readAsDataURL(blob);
+      });
+    }
+  </script>
+</body>
+</html>
