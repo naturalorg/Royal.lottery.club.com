@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Royal Lottery Club</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <img src="assets/logo.png" class="logo" alt="Royal Lottery Club Logo" />
+      <h1 class="title">Royal Lottery Club</h1>
+    </div>
+  </header>
+
+  <!-- === Banner Carousel === -->
+  <div class="carousel">
+    <img id="banner" src="assets/banner1.jpg" alt="Lottery Banner" />
+    <div class="carousel-text">Join the Royal Lottery & Win Big!</div>
+  </div>
+
+  <!-- === Buttons === -->
+  <div class="buttons">
+    <button id="registerBtn" class="main-btn">Register</button>
+    <button id="loginBtn" class="main-btn secondary">Login</button>
+  </div>
+
+  <!-- === Registration Form Popup === -->
+  <div id="registerForm" class="popup hidden">
+    <div class="form-container">
+      <h2>Register</h2>
+      <input type="text" id="name" placeholder="Full Name" />
+      <input type="text" id="mobile" placeholder="Mobile Number" />
+      <input type="text" id="address" placeholder="Address" />
+      <input type="email" id="email" placeholder="Email" />
+      <button id="submitBtn" class="main-btn">Submit</button>
+      <button id="closeRegister" class="close-btn">Close</button>
+    </div>
+  </div>
+
+  <!-- === Login Form Popup === -->
+  <div id="loginForm" class="popup hidden">
+    <div class="form-container">
+      <h2>Login</h2>
+      <input type="text" id="loginName" placeholder="Full Name" />
+      <input type="text" id="ticketNumber" placeholder="Ticket Number" />
+      <button id="loginSubmit" class="main-btn secondary">Login</button>
+      <button id="closeLogin" class="close-btn">Close</button>
+    </div>
+  </div>
+
+  <!-- === Popup Message === -->
+  <div id="popupMessage" class="popup hidden">
+    <div class="form-container">
+      <p id="popupText"></p>
+      <button id="closePopup" class="close-btn">OK</button>
+    </div>
+  </div>
+
+  <!-- === Dashboard === -->
+  <div id="dashboard" class="popup hidden">
+    <div class="form-container">
+      <h2>Your Ticket Details</h2>
+      <div id="userInfo"></div>
+      <br />
+      <a id="joinGroup" href="#" target="_blank" class="main-btn secondary">Join WhatsApp Group</a>
+      <button id="downloadTicket" class="main-btn">Download Ticket</button>
+      <button id="closeDashboard" class="close-btn">Close</button>
+    </div>
+  </div>
+
+  <!-- === TESTIMONIALS SECTION === -->
+  <section class="testimonials-section">
+    <h2 class="testimonials-title">What Our Winners Say 🎉</h2>
+    <div class="testimonial-carousel">
+      <div class="testimonial active">
+        <div class="testimonial-header">
+          <img src="assets/user1.jpg" alt="User 1" />
+          <div>
+            <h4>Rahul Sharma</h4>
+            <span>@rahul_wins</span>
+          </div>
+        </div>
+        <p>“I bought my ticket last month and couldn’t believe when I won ₹10,000! The process was smooth and transparent.”</p>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-header">
+          <img src="assets/user2.jpg" alt="User 2" />
+          <div>
+            <h4>Priya Mehta</h4>
+            <span>@priya_lucky</span>
+          </div>
+        </div>
+        <p>“Royal Lottery Club makes it easy and fun to participate. Totally trustworthy and professional!”</p>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-header">
+          <img src="assets/user3.jpg" alt="User 3" />
+          <div>
+            <h4>Arjun Verma</h4>
+            <span>@arjun_playz</span>
+          </div>
+        </div>
+        <p>“The ticket download and WhatsApp updates are excellent. I’m definitely playing again!”</p>
+      </div>
+
+      <div class="testimonial-nav">
+        <button class="active"></button>
+        <button></button>
+        <button></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- === TERMS SECTION === -->
+  <section class="terms">
+    <h3>Lottery Terms & Conditions</h3>
+    <p>
+      1. Participants must be 18 years or older.<br />
+      2. Tickets once sold cannot be refunded.<br />
+      3. Winners will be notified via registered mobile/email.<br />
+      4. The draw results are final and binding.<br />
+      5. Keep your ticket safe until the official draw.<br />
+      6. Misuse or tampering of ticket details will lead to disqualification.<br />
+      7. Royal Lottery Club reserves all rights for any changes or cancellations.<br />
+    </p>
+  </section>
+
+  <footer>
+    © 2025 Royal Lottery Club. All Rights Reserved.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

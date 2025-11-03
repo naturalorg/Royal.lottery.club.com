@@ -1,0 +1,283 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(to bottom, #fefefe, #f3f3f3);
+  color: #222;
+  text-align: center;
+}
+
+header {
+  background: linear-gradient(90deg, #14213d, #1e3a8a);
+  color: white;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.logo {
+  height: 60px;
+  border-radius: 8px;
+  animation: floatLogo 4s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.title {
+  font-size: 1.8rem;
+  animation: glowText 3s infinite;
+}
+
+@keyframes glowText {
+  0%, 100% { text-shadow: 0 0 5px #fff, 0 0 10px #ffd700; }
+  50% { text-shadow: 0 0 20px #ffb703, 0 0 30px #ff9f1c; }
+}
+
+/* Carousel */
+.carousel {
+  margin: 1rem auto;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: opacity 0.8s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.carousel-text {
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 5px;
+  animation: textSlide 10s linear infinite;
+}
+
+@keyframes textSlide {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100%); }
+}
+
+/* Buttons */
+.buttons {
+  margin: 1.5rem;
+}
+
+.main-btn {
+  background: #fca311;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  margin: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+.main-btn:hover {
+  transform: scale(1.05);
+  background: #e37c00;
+}
+
+.secondary {
+  background: #4361ee;
+}
+
+.popup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+.form-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+  animation: popupFade 0.5s ease-in-out;
+}
+
+@keyframes popupFade {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+input {
+  width: 90%;
+  margin: 8px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.close-btn {
+  background: #999;
+  color: white;
+  padding: 8px 20px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+footer {
+  margin-top: 2rem;
+  padding: 10px;
+  background: #14213d;
+  color: white;
+  font-size: 0.9rem;
+}
+
+/* ================================
+   TESTIMONIALS SECTION
+   ================================ */
+.testimonials-section {
+  margin: 40px auto;
+  max-width: 700px;
+  padding: 20px;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.testimonials-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #14213d;
+  text-shadow: 0 0 3px rgba(0,0,0,0.1);
+}
+
+.testimonial-carousel {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  padding: 25px;
+  overflow: hidden;
+  min-height: 180px;
+}
+
+.testimonial {
+  display: none;
+  text-align: left;
+  animation: fadeIn 0.5s ease;
+}
+
+.testimonial.active {
+  display: block;
+}
+
+.testimonial-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.testimonial-header img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 2px solid #fca311;
+}
+
+.testimonial-header h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.testimonial-header span {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.testimonial p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333;
+  margin-top: 5px;
+}
+
+.testimonial-nav {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.testimonial-nav button {
+  background: #ccc;
+  border: none;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.testimonial-nav button.active {
+  background: #fca311;
+}
+
+/* ================================
+   TERMS & CONDITIONS SECTION
+   ================================ */
+.terms {
+  background: #14213d;
+  color: white;
+  padding: 25px;
+  border-radius: 8px;
+  margin: 40px auto;
+  max-width: 750px;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.terms h3 {
+  color: #fca311;
+  margin-bottom: 10px;
+}
+
+.terms p {
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
