@@ -94,7 +94,7 @@ document.getElementById("loginSubmit").onclick = async () => {
 
     // === JOIN GROUP LINK ===
     document.getElementById("joinGroup").href =
-      "https://chat.whatsapp.com/your-group-link";
+      "https://chat.whatsapp.com/HuqMKTSimfV6zlpB0LztLv";
 
     // === PDF Download ===
     document.getElementById("downloadTicket").onclick = async () => {
@@ -213,3 +213,4 @@ if (testimonials.length && navButtons.length) {
     });
   });
 }
+
